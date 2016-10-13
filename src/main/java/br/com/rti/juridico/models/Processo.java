@@ -1,10 +1,19 @@
 package br.com.rti.juridico.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Processo {
 
-	String numero;
-	String resumo;
-	String forum;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	private String numero;
+	private String resumo;
+	private String forum;
 	
 	public String getNumero() {
 		return numero;

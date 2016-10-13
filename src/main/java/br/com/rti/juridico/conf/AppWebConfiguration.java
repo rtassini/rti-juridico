@@ -6,9 +6,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.rti.juridico.controllers.HomeController;
+import br.com.rti.juridico.daos.ProcessoDAO;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses={HomeController.class})
+@ComponentScan(basePackageClasses={HomeController.class, ProcessoDAO.class})
 public class AppWebConfiguration {
 
 	@Bean
