@@ -1,5 +1,8 @@
 package br.com.rti.juridico.models;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +17,10 @@ public class Processo {
 	private String numero;
 	private String resumo;
 	private String forum;
+	
+	@ElementCollection
+	private List<Parte> parte;
+	
 	
 	public String getNumero() {
 		return numero;
@@ -34,6 +41,18 @@ public class Processo {
 		this.forum = forum;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public List<Parte> getParte() {
+		return parte;
+	}
+	public void setParte(List<Parte> parte) {
+		this.parte = parte;
+	}
 	@Override
 	public String toString() {
 		return "Processo [numero=" + numero + ", resumo=" + resumo + ", forum=" + forum + "]";
