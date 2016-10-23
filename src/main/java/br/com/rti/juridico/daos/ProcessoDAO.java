@@ -1,5 +1,7 @@
 package br.com.rti.juridico.daos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,5 +19,10 @@ public class ProcessoDAO {
 	
 	public void gravar(Processo processo){
 		manager.persist(processo);
+	}
+
+	public List<Processo> listar() {
+		return manager.createQuery("select p from Processo p", Processo.class)
+				.getResultList();
 	}
 }
