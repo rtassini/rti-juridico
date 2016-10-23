@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.rti.juridico.daos.ProcessoDAO;
 import br.com.rti.juridico.models.Processo;
@@ -28,10 +29,12 @@ public class ProcessosController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView gravar(Processo processo){
+	public ModelAndView gravar(Processo processo, RedirectAttributes redirectAttributes){
 		System.out.println(processo);
 		processoDao.gravar(processo);
-		return listar();
+		redirectAttributes.addFlashAttribute("sucesso", "Processo cadastrado com sucesso");
+		
+		return new ModelAndView("redirect:processos");
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)

@@ -9,6 +9,9 @@
 </head>
 <body>
 	<h1>Lista de Processos</h1>
+	
+	<div>${sucesso }</div>
+	
 	<table>
 		<tr>
 			<td>Número</td>
