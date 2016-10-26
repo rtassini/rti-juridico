@@ -10,7 +10,7 @@
 <title>sistema Jurídico</title>
 </head>
 <body>
-	<form:form action="${s:mvcURl('PC#gravar').build() }" method="POST" commandName="processo">
+	<form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="processo">
 		<div>
 			<label>Processo</label>
 			<input type="text" name="numero">
