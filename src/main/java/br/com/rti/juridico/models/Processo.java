@@ -1,5 +1,6 @@
 package br.com.rti.juridico.models;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Processo {
@@ -16,6 +19,9 @@ public class Processo {
 	private Integer id;
 	private String numero;
 	private String resumo;
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private Calendar dataEntrada;
 	private String forum;
 	
 	@ElementCollection
@@ -56,5 +62,11 @@ public class Processo {
 	@Override
 	public String toString() {
 		return "Processo [numero=" + numero + ", resumo=" + resumo + ", forum=" + forum + "]";
+	}
+	public Calendar getDataEntrada() {
+		return dataEntrada;
+	}
+	public void setDataEntrada(Calendar dataEntrada) {
+		this.dataEntrada = dataEntrada;
 	}
 }

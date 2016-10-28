@@ -26,7 +26,11 @@
 			<input type="text" name="forum">
 			<form:errors path="forum" />
 		</div>
-		
+		<div>
+			<label>Data de Entrada</label>
+			<input type="text" name="dataEntrada">
+			<form:errors path="dataEntrada" />
+		</div>
 		
 		<c:forEach items="${tipos }" var="tipoParte" varStatus="status">
 			<div>
