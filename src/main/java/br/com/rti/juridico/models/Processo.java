@@ -20,9 +20,11 @@ public class Processo {
 	private String numero;
 	private String resumo;
 	
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@DateTimeFormat
 	private Calendar dataEntrada;
 	private String forum;
+	
+	private String sumarioPath;
 	
 	@ElementCollection
 	private List<Parte> parte;
@@ -68,5 +70,11 @@ public class Processo {
 	}
 	public void setDataEntrada(Calendar dataEntrada) {
 		this.dataEntrada = dataEntrada;
+	}
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
 	}
 }

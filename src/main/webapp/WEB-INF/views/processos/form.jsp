@@ -10,35 +10,41 @@
 <title>sistema Jurídico</title>
 </head>
 <body>
-	<form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="processo">
+	<form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="processo" enctype="multipart/form-data">
 		<div>
 			<label>Processo</label>
-			<input type="text" name="numero">
+			<form:input path="numero" />
 			<form:errors path="numero" />
 		</div>
 		<div>
 			<label>Resumo</label>
-			<textarea rows="10" cols="20" name="resumo"></textarea>
+			<form:textarea path="resumo" rows="10" cols="20" />
 			<form:errors path="resumo" />
 		</div>
 		<div>
 			<label>Fórum</label>
-			<input type="text" name="forum">
+			<form:input path="forum" />
 			<form:errors path="forum" />
 		</div>
 		<div>
 			<label>Data de Entrada</label>
-			<input type="text" name="dataEntrada">
+			<form:input path="dataEntrada" />
 			<form:errors path="dataEntrada" />
 		</div>
 		
 		<c:forEach items="${tipos }" var="tipoParte" varStatus="status">
 			<div>
 				<label>${tipoParte } </label>
-				<input type="text" name="parte[${status.index }].nome">
-				<input type="hidden" name="parte[${status.index }].tipo" value="${tipoParte }">
+				<form:input path="parte[${status.index }].nome" />
+				<form:hidden path="parte[${status.index }].tipo" value="${tipoParte }" />
 			</div>
 		</c:forEach>
+		
+		<div>
+			<label>Sumário</label>
+			<input name="sumario" type="file" />
+			
+		</div>
 		<button type="submit">Cadastrar</button>
 	</form:form>	
 </body>

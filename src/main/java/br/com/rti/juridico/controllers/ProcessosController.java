@@ -11,6 +11,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,7 +33,7 @@ public class ProcessosController {
 	}
 
 	@RequestMapping("/form")
-	public ModelAndView form(){
+	public ModelAndView form(Processo processo){
 		ModelAndView modelAndView = new ModelAndView("processos/form");
 		modelAndView.addObject("tipos", TipoParte.values());
 		
@@ -40,11 +41,13 @@ public class ProcessosController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView gravar(@Valid Processo processo, BindingResult result, 
+	public ModelAndView gravar(MultipartFile sumario, @Valid Processo processo, BindingResult result, 
 			RedirectAttributes redirectAttributes){
 		
+		System.out.println(sumario.getOriginalFilename());
+		
 		if(result.hasErrors()){
-			return form();
+			return form(processo);
 		}
 		
 		processoDao.gravar(processo);
