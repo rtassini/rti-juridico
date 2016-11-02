@@ -25,4 +25,12 @@ public class ProcessoDAO {
 		return manager.createQuery("select p from Processo p", Processo.class)
 				.getResultList();
 	}
+
+	public Processo find(Integer id) {
+		return manager.createQuery("select distinct(p) from Processo p"
+				+ " join fetch p.parte parte where p.id = :id", Processo.class)
+			.setParameter("id", id)
+			.getSingleResult();
+//		return manager.find(Processo.class, id);
+	}
 }

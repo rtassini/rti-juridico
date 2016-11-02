@@ -15,9 +15,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.rti.juridico.controllers.HomeController;
 import br.com.rti.juridico.daos.ProcessoDAO;
+import br.com.rti.juridico.infra.FileSaver;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses={HomeController.class, ProcessoDAO.class})
+@ComponentScan(basePackageClasses={HomeController.class, ProcessoDAO.class, FileSaver.class})
 public class AppWebConfiguration {
 
 	@Bean
